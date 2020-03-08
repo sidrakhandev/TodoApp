@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Todo App</title>
+  </head>
+  <body>
+    <button id="Displayallbutton" click="todo.DispalyTodos();">
+      DisplayAll
+    </button>
+    <script>
+      console.log("Hello World");
+      var todo = {
+        //todoArray: ["item1", "item2", "item3"],
+        todoArray: [],
+        displayTodos: function() {
+          console.log("TodoList");
+          for (var i = 0; i < this.todoArray.length; i++) {
+            if (this.todoArray[i].completed) {
+              console.log("(*)", this.todoArray[i].text);
+            } else {
+              console.log("()", this.todoArray[i].text);
+            }
+          }
+        },
+
+        addtodo: function(text) {
+          this.todoArray.push({
+            completed: false,
+            text: text
+          });
+
+          this.displayTodos();
+        },
+        toggleCompleted: function(index) {
+          this.todoArray[index].completed = true;
+        },
+
+        //addTodo: function(todoText) {
+        // this.todoArray.push(todoText);
+        //this.displayTodos();
+        //},
+        changeTodo: function(index, newTodoText) {
+          this.todoArray[index] = newTodoText;
+          this.displayTodos();
+        },
+        deleteTodo: function(index) {
+          this.todoArray.splice(index, 1);
+          this.displayTodos();
+        }
+
+        // todoArray: [],
+        //addtodo: function(text) {
+        // this.todoArray.push({
+        //  completed: false,
+        // text: text
+        //});
+        //displayTodos();
+        // }
+      };
+      todoArray.addtodo("item1");
+      todoArray.addtodo("item2");
+      var Displayallbutton = document.getelementById("Displayallbuttond");
+      Displayallbutton.addEventListener("click", function() {
+        todo.displayTodos();
+      });
+    </script>
+  </body>
+</html>
